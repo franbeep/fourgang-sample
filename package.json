@@ -1,0 +1,61 @@
+{
+  "name": "gang-of-four-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gang of Four's Blog",
+  "author": "fran",
+  "keywords": [
+    "gatsby",
+    "cats"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@material-ui/styles": "^4.11.3",
+    "algoliasearch": "^3.35.1",
+    "dotenv": "^8.2.0",
+    "gatsby": "^3.2.1",
+    "gatsby-plugin-algolia": "^0.18.2",
+    "gatsby-plugin-feed": "^3.3.0",
+    "gatsby-plugin-google-analytics": "^3.2.0",
+    "gatsby-plugin-image": "^1.2.1",
+    "gatsby-plugin-manifest": "^3.3.0",
+    "gatsby-plugin-material-ui": "^3.0.1",
+    "gatsby-plugin-react-helmet": "^4.2.0",
+    "gatsby-plugin-sass": "^4.2.0",
+    "gatsby-plugin-sharp": "^3.2.1",
+    "gatsby-plugin-sitemap": "^3.2.0",
+    "gatsby-plugin-use-query-params": "^1.0.1",
+    "gatsby-source-contentful": "^5.2.1",
+    "gatsby-source-filesystem": "^3.2.0",
+    "gatsby-transformer-remark": "^3.2.0",
+    "gatsby-transformer-sharp": "^3.2.0",
+    "jss": "^10.6.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-instantsearch-dom": "^6.10.3",
+    "sass": "^1.32.8",
+    "use-query-params": "^1.2.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "10.1.0",
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "2.2.1",
+    "tslint-plugin-prettier": "2.3.0"
+  }
+}

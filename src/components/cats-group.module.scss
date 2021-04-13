@@ -1,0 +1,19 @@
+$multiplier: 100;
+
+.wrapper {
+  display: flex;
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin-bottom: 20px;
+  div {
+    border-radius: 50%;
+    position: absolute !important;
+  }
+  @for $i from 1 through 4 {
+    div:nth-of-type(#{$i}) {
+      // top: -70px;
+      left: -($multiplier * $i) * 1px + 240px;
+    }
+  }
+}
