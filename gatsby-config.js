@@ -2,9 +2,11 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: 'Gang of Four',
+    title: 'Home',
+    titleTemplate: '%s · Gang of Four',
     siteUrl: 'https://fourgang.netlify.app',
-    description: 'The purfect blog with the laziest posts',
+    description: 'The purrfect blog with the laziest posts',
+    image: '/image/Stubbs.jpg',
   },
   plugins: [
     {
@@ -24,6 +26,7 @@ module.exports = {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+        head: true,
       },
     },
     'gatsby-plugin-react-helmet',

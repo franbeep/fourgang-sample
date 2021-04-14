@@ -1,3 +1,9 @@
+/**
+ * ! This was a naive way of implementing search
+ * ! after algolia's integration was done this
+ * ! became deprecated
+ */
+
 import * as React from 'react';
 
 import { Box, Container, Paper, Typography } from '@material-ui/core';

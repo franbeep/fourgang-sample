@@ -30,6 +30,9 @@ exports.createPages = ({ graphql, actions }) => {
                     layout: FIXED
                     placeholder: BLURRED
                   )
+                  fixed(quality: 100, height: 250, width: 250) {
+                    src
+                  }
                 }
                 name
               }
