@@ -1,19 +1,61 @@
-$multiplier: 100;
+$screen-sm-min: 600px;
+$screen-md-min: 960px;
+$screen-lg-min: 1280px;
+
+// Small devices
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+$multiplier-sm: 60;
+$multiplier-md: 80;
+$multiplier-lg: 100;
 
 .wrapper {
   display: flex;
   position: relative;
-  width: 220px;
-  height: 220px;
   margin-bottom: 20px;
   div {
     border-radius: 50%;
-    position: absolute !important;
+    position: absolute;
   }
+
   @for $i from 1 through 4 {
     div:nth-of-type(#{$i}) {
       // top: -70px;
-      left: -($multiplier * $i) * 1px + 240px;
+      left: -($multiplier-sm * $i) * 1px + 145px;
+    }
+  }
+  @include md {
+    @for $i from 1 through 4 {
+      div:nth-of-type(#{$i}) {
+        // top: -70px;
+        left: -($multiplier-md * $i) * 1px + 200px;
+      }
+    }
+  }
+  @include lg {
+    @for $i from 1 through 4 {
+      div:nth-of-type(#{$i}) {
+        // top: -70px;
+        left: -($multiplier-lg * $i) * 1px + 250px;
+      }
     }
   }
 }

@@ -9,15 +9,9 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   container: {
     paddingTop: '15%',
-  },
-  catsgroup: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginBottom: theme.spacing(10),
-  },
-  verticalPadding: {
-    padding: theme.spacing(5),
   },
 }));
 
@@ -28,17 +22,15 @@ const Page404 = () => {
     <Layout>
       <Header />
       <Container component="main" maxWidth="sm" className={classes.container}>
-        <Box color="text.primary" className={classes.catsgroup}>
-          <Typography variant="h1" gutterBottom>
-            404
-          </Typography>
-          <Typography variant="h3" gutterBottom>
-            Resource not Found{' '}
-            <span role="img" aria-label="angry cat">
-              😾
-            </span>
-          </Typography>
-        </Box>
+        <Typography variant="h1" gutterBottom>
+          404
+        </Typography>
+        <Typography variant="h3" gutterBottom>
+          Resource not Found{' '}
+          <span role="img" aria-label="angry cat">
+            😾
+          </span>
+        </Typography>
       </Container>
     </Layout>
   );

@@ -6,7 +6,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   return graphql(
     `
-      query loadPagesQuery($limit: Int!) {
+      query getAllPosts($limit: Int!) {
         allContentfulBlogPost(
           sort: { fields: date, order: DESC }
           limit: $limit

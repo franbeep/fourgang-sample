@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+// TODO: need to put on a separate file
 function parseRichTextToTexts(obj) {
   if (!obj) return [];
   if (obj.nodeType === 'text') return obj.value;
@@ -112,6 +113,7 @@ module.exports = {
                 };
               });
             },
+            // TODO: Use fragments
             query: `
               {
                 allContentfulBlogPost(sort: {fields: date, order: DESC}) {

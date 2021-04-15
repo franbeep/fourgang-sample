@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as style from './blog-post.module.scss';
 
 import {
   Avatar,
@@ -10,9 +9,9 @@ import {
   Paper,
   Typography,
 } from '@material-ui/core';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 
 import { AvatarGroup } from '@material-ui/lab';
+import { BLOCKS } from '@contentful/rich-text-types';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Header from '../components/header';
 import Layout from '../components/layout';
@@ -24,10 +23,6 @@ import { parseRichTextToTexts } from '../utils/richTextUtils';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 
 const useStyles = makeStyles(theme => ({
-  large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
-  },
   container: {
     'paddingTop': '15%',
     '& a': {
@@ -38,9 +33,6 @@ const useStyles = makeStyles(theme => ({
   padding: {
     padding: theme.spacing(3),
   },
-  margin: {
-    marginBottom: theme.spacing(5),
-  },
   authorDate: {
     display: 'flex',
     alignItems: 'center',
@@ -49,9 +41,6 @@ const useStyles = makeStyles(theme => ({
   subtitle: {
     paddingLeft: theme.spacing(0.6),
     opacity: 0.75,
-  },
-  underline: {
-    textDecoration: 'underline',
   },
   avatarImg: {
     '& div': {
@@ -62,11 +51,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const options = {
-  // renderMark: {
-  //   [MARKS.BOLD]: text => <Bold>{text}</Bold>,
-  // },
   renderNode: {
-    // [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
     [BLOCKS.EMBEDDED_ASSET]: node => {
       return <RichTextImage assetId={node.data.target.sys.id} />;
     },
@@ -83,9 +68,6 @@ const BlogPost = ({ pageContext: entry }) => {
   const classes = useStyles();
 
   const simpleText = parseRichTextToTexts(JSON.parse(entry.text.raw));
-
-  console.log('ENTRY');
-  console.log(entry);
 
   return (
     <Layout>
@@ -132,12 +114,11 @@ const BlogPost = ({ pageContext: entry }) => {
                 .map((author, index) => {
                   if (author == null) return ', ';
                   return (
-                    <Link key={index} color="secondary" href="#">
+                    <Link key={index} href="#">
                       {author.name}
                     </Link>
                   );
                 })}
-              {/* {entry.authors.length > 2 && ' & more'} */}
               <Separator />
               {moment(entry.createdAt).format('ll')}
               <Separator />

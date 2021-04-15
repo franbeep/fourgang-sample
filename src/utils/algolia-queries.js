@@ -1,23 +1,5 @@
 const indexName = `Pages`;
 
-// const pageQuery = `{
-//   pages: allContentfulBlogPost(sort: { fields: date, order: DESC }) {
-//     edges {
-//       node {
-//         id
-//         date(formatString: "MM/DD/YYYY")
-//         title
-//         text {
-//           raw
-//         }
-//         authors {
-//           name
-//         }
-//       }
-//     }
-//   }
-// }`;
-
 const pageQuery = `{
   pages: allContentfulBlogPost(sort: { fields: date, order: DESC }) {
     edges {

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as style from './blog-entry.module.scss';
 
 import {
   Avatar,

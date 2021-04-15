@@ -1,5 +1,3 @@
-import * as style from './search-result.module.scss';
-
 import {
   Highlight,
   Hits,
@@ -62,7 +60,7 @@ const PageHit = ({ hit }) => {
 
   return (
     <div>
-      <Link to={`/${hit.slug}`} className={style.link}>
+      <Link to={`/${hit.slug}`}>
         <Typography variant="subtitle1">
           <Highlight
             attribute="title"

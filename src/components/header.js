@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as style from './header.module.scss';
 
 import { AppBar, Button, Toolbar } from '@material-ui/core';
 import { fade, makeStyles } from '@material-ui/core/styles';
@@ -9,6 +8,9 @@ import Search from '../components/search';
 
 const createUseStyles = colorSet => {
   return makeStyles(theme => ({
+    root: {
+      boxShadow: 'none',
+    },
     grow: {
       flexGrow: 1,
     },
@@ -60,10 +62,6 @@ const createUseStyles = colorSet => {
         },
       },
     },
-    appBar: {
-      // color: colorSet === 'light' ? '#002421' : 'rgba(255,255,255, .8)',
-      boxShadow: 'none',
-    },
   }));
 };
 
@@ -73,28 +71,20 @@ const Header = ({ theme = 'light' }) => {
   const searchIndices = [{ name: `Pages`, title: `Pages` }];
 
   return (
-    <AppBar position="fixed" color="transparent" className={classes.appBar}>
+    <AppBar position="fixed" color="transparent" className={classes.root}>
       <Toolbar>
-        {/* <Typography variant="h6">cool logo here</Typography> */}
-
         <div className={classes.grow}></div>
         <nav>
           <Link to="/">
-            <Button color="inherit" className={style.link}>
-              Home
-            </Button>
+            <Button>Home</Button>
           </Link>
 
           <Link to="/about">
-            <Button color="inherit" className={style.link}>
-              About
-            </Button>
+            <Button>About</Button>
           </Link>
 
           <Link to="/rss.xml">
-            <Button color="inherit" className={style.link}>
-              RSS
-            </Button>
+            <Button>RSS</Button>
           </Link>
         </nav>
 

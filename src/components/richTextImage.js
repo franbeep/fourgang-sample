@@ -38,32 +38,9 @@ const RichTextImage = ({ className, assetId }) => {
   );
 
   if (!asset) return null;
-  // return (
-  //   <>
-  //     <h2>Embedded Asset (Fetched and Filtered)</h2>
-  //     <pre>
-  //       <code>Asset not found.</code>
-  //     </pre>
-  //   </>
-  // );
-
-  // return (
-  //   <>
-  //     <h2>Embedded Asset (Fetched and Filtered)</h2>
-  //     <pre>
-  //       <code>{JSON.stringify(asset, null, 2)}</code>
-  //     </pre>
-  //   </>
-  // );
 
   return (
     <Box className={classes.centered}>
-      {/* <>
-        <h2>Embedded Asset (Fetched and Filtered)</h2>
-        <pre>
-          <code>{JSON.stringify(asset, null, 2)}</code>
-        </pre>
-      </> */}
       <GatsbyImage
         className={className}
         image={asset.node.gatsbyImageData}
