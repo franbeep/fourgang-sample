@@ -107,7 +107,7 @@ const BlogEntry = ({ entry }) => {
         </Typography>
 
         <GatsbyLink to={`/${entry.slug}`}>
-          <Button>Read More</Button>
+          <Button>Read full blog post</Button>
         </GatsbyLink>
       </Paper>
     </article>

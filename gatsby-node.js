@@ -24,13 +24,13 @@ exports.createPages = ({ graphql, actions }) => {
                 avatar {
                   gatsbyImageData(
                     quality: 100
-                    width: 200
-                    height: 200
+                    width: 220
+                    height: 220
                     formats: WEBP
                     layout: FIXED
                     placeholder: BLURRED
                   )
-                  fixed(quality: 100, height: 250, width: 250) {
+                  fixed(quality: 100, height: 220, width: 220) {
                     src
                   }
                 }

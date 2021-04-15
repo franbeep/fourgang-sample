@@ -70,8 +70,8 @@ export const query = graphql`
           avatar {
             gatsbyImageData(
               quality: 100
-              width: 200
-              height: 200
+              width: 220
+              height: 220
               formats: WEBP
               layout: FIXED
               placeholder: BLURRED
