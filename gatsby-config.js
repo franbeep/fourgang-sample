@@ -3,7 +3,9 @@ require('dotenv').config();
 function parseRichTextToTexts(obj) {
   if (!obj) return [];
   if (obj.nodeType === 'text') return obj.value;
-  return obj.content.flatMap(o => parseRichTextToTexts(o));
+  if (obj.nodeType === 'paragraph' || obj.nodeType === 'document')
+    return obj.content.flatMap(o => parseRichTextToTexts(o));
+  else return [];
 }
 
 module.exports = {
