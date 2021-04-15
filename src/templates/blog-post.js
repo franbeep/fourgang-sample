@@ -72,7 +72,7 @@ const BlogPost = ({ pageContext: entry }) => {
       <Seo
         title={entry.title}
         desc={simpleText[0]}
-        banner={entry.authors[0].avatar.fixed.src}
+        externalBanner={`https:${entry.authors[0].avatar.fixed.src}`}
         pathname={`/${entry.slug}`}
         article={entry.createdAt}
         node={entry}

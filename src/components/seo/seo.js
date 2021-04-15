@@ -8,7 +8,15 @@ import Twitter from './twitter';
 
 // Complete tutorial: https://www.gatsbyjs.org/docs/add-seo-component/
 
-const SEO = ({ title, desc, banner, pathname, article, node }) => {
+const SEO = ({
+  title,
+  desc,
+  banner,
+  externalBanner,
+  pathname,
+  article,
+  node,
+}) => {
   const { site } = useStaticQuery(query);
 
   const {
@@ -28,7 +36,9 @@ const SEO = ({ title, desc, banner, pathname, article, node }) => {
   const seo = {
     title: title || defaultTitle,
     description: desc || defaultDescription,
-    image: `${siteUrl}${banner || defaultBanner}`,
+    image: externalBanner
+      ? externalBanner
+      : `${siteUrl}${banner || defaultBanner}`,
     url: `${siteUrl}${pathname || ''}`,
   };
 

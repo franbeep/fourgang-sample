@@ -14,7 +14,7 @@ module.exports = {
     title: 'Home',
     titleTemplate: '%s · Gang of Four',
     description: 'Naps, purrs & more!',
-    banner: '/image/Stubbs.jpg',
+    banner: '/images/Stubbs.jpg',
     headline: 'Posting the laziest content you will ever see',
     siteLanguage: 'en',
     ogLanguage: 'en_US',
