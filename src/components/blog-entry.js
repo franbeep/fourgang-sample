@@ -42,8 +42,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
   authorsField: {
+    color: 'rgba(0, 36, 33, 0.75)',
     paddingLeft: theme.spacing(0.6),
-    opacity: 0.75,
   },
 }));
 

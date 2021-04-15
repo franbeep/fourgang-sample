@@ -12,7 +12,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   container: {
-    paddingTop: '15%',
+    'paddingTop': '15%',
+    '& a': {
+      color: theme.palette.secondary.main,
+      textDecoration: 'none',
+    },
   },
   catsgroup: {
     display: 'flex',

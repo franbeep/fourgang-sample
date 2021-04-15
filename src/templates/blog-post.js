@@ -4,18 +4,19 @@ import * as style from './blog-post.module.scss';
 import {
   Avatar,
   Box,
-  Button,
   Container,
   Divider,
   Link,
   Paper,
   Typography,
 } from '@material-ui/core';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 
 import { AvatarGroup } from '@material-ui/lab';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Header from '../components/header';
 import Layout from '../components/layout';
+import RichTextImage from '../components/richTextImage';
 import Seo from '../components/seo';
 import { makeStyles } from '@material-ui/core/styles';
 import moment from 'moment';
@@ -28,7 +29,11 @@ const useStyles = makeStyles(theme => ({
     height: theme.spacing(7),
   },
   container: {
-    paddingTop: '15%',
+    'paddingTop': '15%',
+    '& a': {
+      color: theme.palette.secondary.main,
+      textDecoration: 'none',
+    },
   },
   padding: {
     padding: theme.spacing(3),
@@ -56,6 +61,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const options = {
+  // renderMark: {
+  //   [MARKS.BOLD]: text => <Bold>{text}</Bold>,
+  // },
+  renderNode: {
+    // [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+    [BLOCKS.EMBEDDED_ASSET]: node => {
+      return <RichTextImage assetId={node.data.target.sys.id} />;
+    },
+  },
+};
+
 const Separator = () => (
   <Box component="span" style={{ padding: '0 0.4em' }}>
     •
@@ -66,6 +83,9 @@ const BlogPost = ({ pageContext: entry }) => {
   const classes = useStyles();
 
   const simpleText = parseRichTextToTexts(JSON.parse(entry.text.raw));
+
+  console.log('ENTRY');
+  console.log(entry);
 
   return (
     <Layout>
@@ -128,7 +148,7 @@ const BlogPost = ({ pageContext: entry }) => {
           <Divider />
 
           <Typography component="div" variant="subtitle1" paragraph>
-            {renderRichText(entry.text)}
+            {renderRichText(entry.text, options)}
           </Typography>
 
           <Divider />
@@ -139,7 +159,7 @@ const BlogPost = ({ pageContext: entry }) => {
             className={classes.subtitle}
             paragraph
           >
-            Posted {moment(entry.createdAt).format('LLLL')}
+            Posted on {moment(entry.createdAt).format('LLLL')}
           </Typography>
         </Paper>
       </Container>

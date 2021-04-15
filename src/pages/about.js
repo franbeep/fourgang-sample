@@ -11,7 +11,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   container: {
-    paddingTop: '15%',
+    'paddingTop': '15%',
+    '& a': {
+      color: theme.palette.secondary.main,
+      textDecoration: 'none',
+    },
   },
   padding: {
     padding: theme.spacing(2),
@@ -33,15 +37,10 @@ const About = () => {
           <Typography variant="body1" paragraph>
             You have come across a sample website. This is supposed to be a
             website to test a few of{' '}
-            <Link color="secondary" href="https://www.gatsbyjs.com/">
-              Gatsby
-            </Link>{' '}
-            features and integrations including Contentful, Netlify, SEO
-            optimzations & more. All images were taken from{' '}
-            <Link color="secondary" href="https://unsplash.com/">
-              Unplash
-            </Link>
-            .
+            <Link href="https://www.gatsbyjs.com/">Gatsby</Link> features and
+            integrations including Contentful, Netlify, SEO optimzations & more.
+            All images were taken from{' '}
+            <Link href="https://unsplash.com/">Unplash</Link>.
           </Typography>
           <Typography variant="body1" paragraph>
             Thanks{' '}
