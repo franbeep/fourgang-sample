@@ -25,14 +25,7 @@ const RichTextImage = ({ className, assetId }) => {
         edges {
           node {
             contentful_id
-            gatsbyImageData(
-              quality: 100
-              width: 220
-              height: 220
-              formats: WEBP
-              layout: FIXED
-              placeholder: BLURRED
-            )
+            gatsbyImageData
             description
           }
         }
