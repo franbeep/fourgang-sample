@@ -83,7 +83,7 @@ const Header = ({ theme = 'light' }) => {
             <Button>About</Button>
           </Link>
 
-          <Link to="/rss.xml">
+          <Link to="/feed" target="_blank" rel="noopener nofollow">
             <Button>RSS</Button>
           </Link>
         </nav>

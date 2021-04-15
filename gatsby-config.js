@@ -131,7 +131,7 @@ module.exports = {
                 }
               }
             `,
-            output: '/rss.xml',
+            output: '/feed',
             title: 'RSS Feed',
           },
         ],

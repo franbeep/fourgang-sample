@@ -75,6 +75,7 @@ export const query = graphql`
               formats: WEBP
               layout: FIXED
               placeholder: BLURRED
+              outputPixelDensities: 1
             )
           }
           name

@@ -29,6 +29,7 @@ exports.createPages = ({ graphql, actions }) => {
                     formats: WEBP
                     layout: FIXED
                     placeholder: BLURRED
+                    outputPixelDensities: 1
                   )
                   fixed(quality: 100, height: 220, width: 220) {
                     src
