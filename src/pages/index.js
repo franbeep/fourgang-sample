@@ -6,6 +6,7 @@ import BlogEntry from '../components/blog-entry';
 import CatsGroup from '../components/cats-group';
 import Header from '../components/header';
 import Layout from '../components/layout';
+import Seo from '../components/seo';
 import { graphql } from 'gatsby';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -26,22 +27,24 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
+      <Seo title={`Home`} />
       <Header />
-      <main>
-        <Container maxWidth="sm" className={classes.container}>
-          <Box color="text.primary" className={classes.catsgroup}>
-            <CatsGroup />
-            <Typography variant="h3" gutterBottom>
-              Gang of Four (Cats)
-            </Typography>
-            <Typography variant="h5">blog</Typography>
-          </Box>
+      <Container component="main" maxWidth="sm" className={classes.container}>
+        <Box color="text.primary" className={classes.catsgroup}>
+          <CatsGroup />
+          <Typography variant="h3" gutterBottom>
+            Gang of Four{' '}
+            <span role="img" aria-label="Cat">
+              🐈
+            </span>
+          </Typography>
+          <Typography variant="h5">blog</Typography>
+        </Box>
 
-          {data.allContentfulBlogPost.nodes.map((item, index) => (
-            <BlogEntry key={index} entry={item} />
-          ))}
-        </Container>
-      </main>
+        {data.allContentfulBlogPost.nodes.map((item, index) => (
+          <BlogEntry key={index} entry={item} />
+        ))}
+      </Container>
     </Layout>
   );
 };
@@ -52,7 +55,8 @@ export const query = graphql`
   query {
     allContentfulBlogPost(sort: { fields: date, order: DESC }) {
       nodes {
-        date(formatString: "MM/DD/YYYY")
+        createdAt: date
+        modifiedAt: date
         slug
         title
         text {

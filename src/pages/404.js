@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { Box, Container, Typography } from '@material-ui/core';
-import { StringParam, useQueryParam } from 'use-query-params';
 
 import Header from '../components/header';
 import Layout from '../components/layout';
@@ -28,21 +27,19 @@ const Page404 = () => {
   return (
     <Layout>
       <Header />
-      <main>
-        <Container maxWidth="sm" className={classes.container}>
-          <Box color="text.primary" className={classes.catsgroup}>
-            <Typography variant="h1" gutterBottom>
-              404
-            </Typography>
-            <Typography variant="h3" gutterBottom>
-              Resource not Found{' '}
-              <span role="img" aria-label="angry cat">
-                😾
-              </span>
-            </Typography>
-          </Box>
-        </Container>
-      </main>
+      <Container component="main" maxWidth="sm" className={classes.container}>
+        <Box color="text.primary" className={classes.catsgroup}>
+          <Typography variant="h1" gutterBottom>
+            404
+          </Typography>
+          <Typography variant="h3" gutterBottom>
+            Resource not Found{' '}
+            <span role="img" aria-label="angry cat">
+              😾
+            </span>
+          </Typography>
+        </Box>
+      </Container>
     </Layout>
   );
 };

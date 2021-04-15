@@ -6,18 +6,20 @@ import {
   Box,
   Button,
   Container,
+  Divider,
   Link,
   Paper,
   Typography,
 } from '@material-ui/core';
-import { GatsbyImage, getImageData } from 'gatsby-plugin-image';
 
 import { AvatarGroup } from '@material-ui/lab';
-import { Link as GatsbyLink } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Header from '../components/header';
-import { Helmet } from 'react-helmet';
 import Layout from '../components/layout';
+import Seo from '../components/seo';
 import { makeStyles } from '@material-ui/core/styles';
+import moment from 'moment';
+import { parseRichTextToTexts } from '../utils/richTextUtils';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 
 const useStyles = makeStyles(theme => ({
@@ -29,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     paddingTop: '15%',
   },
   padding: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
   },
   margin: {
     marginBottom: theme.spacing(5),
@@ -39,8 +41,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     marginBottom: theme.spacing(2),
   },
-  padLeft: {
-    paddingLeft: theme.spacing(0.5),
+  subtitle: {
+    paddingLeft: theme.spacing(0.6),
+    opacity: 0.75,
   },
   underline: {
     textDecoration: 'underline',
@@ -53,31 +56,40 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const Separator = () => (
+  <Box component="span" style={{ padding: '0 0.4em' }}>
+    •
+  </Box>
+);
+
 const BlogPost = ({ pageContext: entry }) => {
   const classes = useStyles();
 
-  // const siteUrl = 'https://fourgang.netlify.app';
-  // console.log(getImageData(entry.authors[0].avatar.gatsbyImageData));
+  const simpleText = parseRichTextToTexts(JSON.parse(entry.text.raw));
 
   return (
     <Layout>
+      <Seo
+        title={entry.title}
+        desc={simpleText[0]}
+        banner={entry.authors[0].avatar.fixed.src}
+        pathname={`/${entry.slug}`}
+        article={entry.createdAt}
+        node={entry}
+      />
       <Header />
-      <Helmet title={entry.title}>
-        <meta property="og:title" content={entry.title} />
-        <meta name="image" content={entry.authors[0].avatar.fixed.src} />
-        <meta property="og:image" content={entry.authors[0].avatar.fixed.src} />
-        {/* <meta property="og:url" content={siteUrl + '/' + entry.slug} /> */}
-        <meta property="og:type" content="article" />
-        <meta charSet="utf-8" />
-      </Helmet>
+      <Container
+        component="article"
+        maxWidth="md"
+        className={classes.container}
+      >
+        <Typography variant="h3" gutterBottom>
+          {entry.title}
+        </Typography>
 
-      <Container component="main" maxWidth="sm" className={classes.container}>
         <Paper elevation={0} className={classes.padding}>
-          <Typography variant="h3" gutterBottom>
-            {entry.title}
-          </Typography>
           <div className={classes.authorDate}>
-            <AvatarGroup max={2}>
+            <AvatarGroup max={3}>
               {entry.authors.map((author, authorIndex) => (
                 <Avatar key={authorIndex} className={classes.avatarImg}>
                   <GatsbyImage
@@ -88,12 +100,10 @@ const BlogPost = ({ pageContext: entry }) => {
                 </Avatar>
               ))}
             </AvatarGroup>
-            <Typography
-              color="secondary"
-              variant="h6"
-              className={classes.padLeft}
-            >
+
+            <Typography variant="subtitle1" className={classes.subtitle}>
               {entry.authors
+                // .slice(0, 2)
                 .reduce((acc, author) => {
                   return acc.length === 0
                     ? [author]
@@ -107,24 +117,30 @@ const BlogPost = ({ pageContext: entry }) => {
                     </Link>
                   );
                 })}
-            </Typography>
-            <Typography variant="h6" className={classes.padLeft}>
-              •
-            </Typography>
-            <Typography variant="h6" className={classes.padLeft}>
-              {entry.date}
+              {/* {entry.authors.length > 2 && ' & more'} */}
+              <Separator />
+              {moment(entry.createdAt).format('ll')}
+              <Separator />
+              {moment(entry.createdAt).fromNow()}
             </Typography>
           </div>
 
-          <Box>
-            <Typography component="div" variant="subtitle1" paragraph>
-              {renderRichText(entry.text)}
-            </Typography>
-          </Box>
+          <Divider />
 
-          <GatsbyLink to="/" classes={style.link}>
-            <Button>Go Back</Button>
-          </GatsbyLink>
+          <Typography component="div" variant="subtitle1" paragraph>
+            {renderRichText(entry.text)}
+          </Typography>
+
+          <Divider />
+
+          <Typography
+            component="div"
+            variant="body1"
+            className={classes.subtitle}
+            paragraph
+          >
+            Posted {moment(entry.createdAt).format('LLLL')}
+          </Typography>
         </Paper>
       </Container>
     </Layout>

@@ -1,12 +1,22 @@
 require('dotenv').config();
 
+function parseRichTextToTexts(obj) {
+  if (!obj) return [];
+  if (obj.nodeType === 'text') return obj.value;
+  return obj.content.flatMap(o => parseRichTextToTexts(o));
+}
+
 module.exports = {
   siteMetadata: {
+    siteUrl: 'https://fourgang.netlify.app',
     title: 'Home',
     titleTemplate: '%s · Gang of Four',
-    siteUrl: 'https://fourgang.netlify.app',
-    description: 'The purrfect blog with the laziest posts',
-    image: '/image/Stubbs.jpg',
+    description: 'Naps, purrs & more!',
+    banner: '/image/Stubbs.jpg',
+    headline: 'Posting the laziest content you will ever see',
+    siteLanguage: 'en',
+    ogLanguage: 'en_US',
+    author: 'Felipera',
   },
   plugins: [
     {
@@ -92,9 +102,11 @@ module.exports = {
                   slug: node.slug,
                   title: node.title,
                   authors: node.authors,
-                  date: node.date,
-                  url: site.siteMetadata.siteUrl + node.slug,
-                  text: { 'content:encoded': node.text },
+                  date: node.createdAt,
+                  url: `${site.siteMetadata.siteUrl}/${node.slug}`,
+                  text: {
+                    'content:encoded': parseRichTextToTexts(node.text)[0],
+                  },
                 };
               });
             },
@@ -102,7 +114,7 @@ module.exports = {
               {
                 allContentfulBlogPost(sort: {fields: date, order: DESC}) {
                   nodes {
-                    date(formatString: "MM/DD/YYYY")
+                    createdAt: date
                     slug
                     title
                     authors {

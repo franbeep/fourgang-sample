@@ -3,7 +3,6 @@ const path = require(`path`);
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   const blogPostTemplate = path.resolve(`src/templates/blog-post.js`);
-  const searchPostTemplate = path.resolve(`src/templates/search.js`);
 
   return graphql(
     `
@@ -14,7 +13,8 @@ exports.createPages = ({ graphql, actions }) => {
         ) {
           edges {
             node {
-              date(formatString: "MM/DD/YYYY")
+              createdAt: date
+              modifiedAt: date
               slug
               title
               text {
@@ -57,14 +57,5 @@ exports.createPages = ({ graphql, actions }) => {
         },
       });
     });
-
-    // Create (naive) search page
-    // createPage({
-    //   path: `search`,
-    //   component: searchPostTemplate,
-    //   context: {
-    //     nodes: result.data.allContentfulBlogPost.edges,
-    //   },
-    // });
   });
 };

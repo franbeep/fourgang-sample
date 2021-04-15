@@ -1,12 +1,11 @@
 import * as React from 'react';
 import * as style from './header.module.scss';
 
-import { AppBar, Button, InputBase, Toolbar } from '@material-ui/core';
-import { Link, navigate } from 'gatsby';
+import { AppBar, Button, Toolbar } from '@material-ui/core';
 import { fade, makeStyles } from '@material-ui/core/styles';
 
+import { Link } from 'gatsby';
 import Search from '../components/search';
-import { Search as SearchIcon } from '@material-ui/icons';
 
 const createUseStyles = colorSet => {
   return makeStyles(theme => ({
@@ -69,8 +68,6 @@ const createUseStyles = colorSet => {
 };
 
 const Header = ({ theme = 'light' }) => {
-  const [searchQuery, setSearchQuery] = React.useState('');
-
   const classes = createUseStyles(theme)();
 
   const searchIndices = [{ name: `Pages`, title: `Pages` }];
@@ -102,32 +99,6 @@ const Header = ({ theme = 'light' }) => {
         </nav>
 
         <Search indices={searchIndices} />
-
-        {/* <form
-          onSubmit={ev => {
-            ev.preventDefault();
-            console.log('submiting query search now');
-            navigate(`/search/?q=${searchQuery}`);
-          }}
-        >
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              value={searchQuery}
-              onChange={ev => {
-                setSearchQuery(ev.target.value);
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-        </form> */}
       </Toolbar>
     </AppBar>
   );

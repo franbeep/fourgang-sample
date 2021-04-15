@@ -1,17 +1,25 @@
 import * as React from 'react';
 import * as style from './blog-entry.module.scss';
 
-import { Avatar, Button, Link, Paper, Typography } from '@material-ui/core';
+import {
+  Avatar,
+  Box,
+  Button,
+  Link,
+  Paper,
+  Typography,
+} from '@material-ui/core';
 
 import { AvatarGroup } from '@material-ui/lab';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Link as GatsbyLink } from 'gatsby';
 import { makeStyles } from '@material-ui/core/styles';
+import moment from 'moment';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 
 const useStyles = makeStyles(theme => ({
   padding: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
   },
   margin: {
     marginBottom: theme.spacing(5),
@@ -24,8 +32,8 @@ const useStyles = makeStyles(theme => ({
   padLeft: {
     paddingLeft: theme.spacing(0.5),
   },
-  underline: {
-    textDecoration: 'underline',
+  title: {
+    textDecoration: 'none',
   },
   avatarImg: {
     '& div': {
@@ -33,14 +41,17 @@ const useStyles = makeStyles(theme => ({
       height: 'inherit !important',
     },
   },
+  authorsField: {
+    paddingLeft: theme.spacing(0.6),
+    opacity: 0.75,
+  },
 }));
 
-// function truncate(text, maxLength = 30) {
-//   const words = text.trim().split(' ');
-//   if (words.length > maxLength)
-//     return words.slice(0, maxLength).join(' ') + ' ...';
-//   return text;
-// }
+const Separator = () => (
+  <Box component="span" style={{ padding: '0 0.4em' }}>
+    •
+  </Box>
+);
 
 const BlogEntry = ({ entry }) => {
   const classes = useStyles();
@@ -48,14 +59,16 @@ const BlogEntry = ({ entry }) => {
   return (
     <article className={classes.margin}>
       <Paper elevation={0} className={classes.padding}>
-        <Typography variant="h5" gutterBottom>
-          {entry.title}
-        </Typography>
+        <GatsbyLink to={`/${entry.slug}`} className={classes.title}>
+          <Box color="text.primary">
+            <Typography variant="h5" gutterBottom>
+              {entry.title}
+            </Typography>
+          </Box>
+        </GatsbyLink>
 
         <div className={classes.authorDate}>
-          {/* error src ? */}
-
-          <AvatarGroup max={2}>
+          <AvatarGroup max={3}>
             {entry.authors.map((author, authorIndex) => (
               <Avatar key={authorIndex} className={classes.avatarImg}>
                 <GatsbyImage
@@ -66,12 +79,10 @@ const BlogEntry = ({ entry }) => {
               </Avatar>
             ))}
           </AvatarGroup>
-          <Typography
-            color="secondary"
-            variant="subtitle1"
-            className={classes.padLeft}
-          >
+
+          <Typography variant="subtitle2" className={classes.authorsField}>
             {entry.authors
+              // .slice(0, 2)
               .reduce((acc, author) => {
                 return acc.length === 0
                   ? [author]
@@ -85,12 +96,10 @@ const BlogEntry = ({ entry }) => {
                   </Link>
                 );
               })}
-          </Typography>
-          <Typography variant="subtitle1" className={classes.padLeft}>
-            •
-          </Typography>
-          <Typography variant="subtitle1" className={classes.padLeft}>
-            {entry.date}
+            <Separator />
+            {moment(entry.createdAt).format('ll')}
+            <Separator />
+            {moment(entry.createdAt).fromNow()}
           </Typography>
         </div>
 
@@ -98,7 +107,7 @@ const BlogEntry = ({ entry }) => {
           {renderRichText(entry.text)[0]}
         </Typography>
 
-        <GatsbyLink to={`/${entry.slug}`} classes={style.link}>
+        <GatsbyLink to={`/${entry.slug}`}>
           <Button>Read More</Button>
         </GatsbyLink>
       </Paper>
