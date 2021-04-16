@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Container, Typography } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
 
 import Header from '../components/header';
 import Layout from '../components/layout';

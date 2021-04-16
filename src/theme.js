@@ -5,6 +5,9 @@ const theme = createMuiTheme({
     text: {
       primary: '#002421',
     },
+    background: {
+      default: '#ebebeb',
+    },
   },
   typography: {
     fontFamily: '-apple-system, Ubuntu, Roboto, Helvetica, Arial, sans-serif',

@@ -1,9 +1,10 @@
 import * as React from 'react';
 
-import { AppBar, Button, Toolbar } from '@material-ui/core';
+import { AppBar, Box, Button, IconButton, Toolbar } from '@material-ui/core';
 import { fade, makeStyles } from '@material-ui/core/styles';
 
 import { Link } from 'gatsby';
+import { Menu as MenuIcon } from '@material-ui/icons';
 import Search from '../components/search';
 
 const createUseStyles = colorSet => {
@@ -13,6 +14,20 @@ const createUseStyles = colorSet => {
     },
     grow: {
       flexGrow: 1,
+      // [theme.breakpoints.up('sm')]: {
+      //   display: 'hidden',
+      // },
+    },
+    menuNavigation: {
+      display: 'none',
+      [theme.breakpoints.up('sm')]: {
+        display: 'block',
+      },
+    },
+    menuButton: {
+      [theme.breakpoints.up('sm')]: {
+        display: 'none',
+      },
     },
     search: {
       'position': 'relative',
@@ -72,9 +87,18 @@ const Header = ({ theme = 'light' }) => {
 
   return (
     <AppBar position="fixed" color="transparent" className={classes.root}>
-      <Toolbar>
+      <Toolbar component="nav">
+        <IconButton
+          edge="start"
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="menu"
+        >
+          <MenuIcon />
+        </IconButton>
         <div className={classes.grow}></div>
-        <nav>
+
+        <Box className={classes.menuNavigation}>
           <Link to="/">
             <Button>Home</Button>
           </Link>
@@ -83,10 +107,10 @@ const Header = ({ theme = 'light' }) => {
             <Button>About</Button>
           </Link>
 
-          <Link to="/feed" target="_blank" rel="noopener nofollow">
+          <a href="/rss.xml" target="_blank" rel="noopener nofollow">
             <Button>RSS</Button>
-          </Link>
-        </nav>
+          </a>
+        </Box>
 
         <Search indices={searchIndices} />
       </Toolbar>

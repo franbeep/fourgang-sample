@@ -23,7 +23,7 @@ exports.createPages = ({ graphql, actions }) => {
               authors {
                 avatar {
                   gatsbyImageData(
-                    quality: 100
+                    quality: 60
                     width: 220
                     height: 220
                     formats: WEBP

@@ -3,7 +3,6 @@ import {
   Hits,
   Index,
   PoweredBy,
-  Snippet,
   connectStateResults,
 } from 'react-instantsearch-dom';
 import { Paper, Typography } from '@material-ui/core';

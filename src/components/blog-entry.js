@@ -34,6 +34,11 @@ const useStyles = makeStyles(theme => ({
   title: {
     textDecoration: 'none',
   },
+  avatarGroup: {
+    '& .MuiAvatar-root': {
+      borderColor: 'white',
+    },
+  },
   avatarImg: {
     '& div': {
       width: 'inherit !important',
@@ -67,7 +72,7 @@ const BlogEntry = ({ entry }) => {
         </GatsbyLink>
 
         <div className={classes.authorDate}>
-          <AvatarGroup max={3}>
+          <AvatarGroup max={3} className={classes.avatarGroup}>
             {entry.authors.map((author, authorIndex) => (
               <Avatar key={authorIndex} className={classes.avatarImg}>
                 <GatsbyImage

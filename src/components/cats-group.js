@@ -64,7 +64,7 @@ const CatsGroup = () => {
           layout="fixed"
           width={220}
           height={220}
-          quality={100}
+          quality={85}
         />
         <StaticImage
           src="../images/Duke.jpg"
@@ -73,7 +73,7 @@ const CatsGroup = () => {
           layout="fixed"
           width={220}
           height={220}
-          quality={100}
+          quality={85}
         />
         <StaticImage
           src="../images/Henson.jpg"
@@ -82,7 +82,7 @@ const CatsGroup = () => {
           layout="fixed"
           width={220}
           height={220}
-          quality={100}
+          quality={85}
         />
         <StaticImage
           src="../images/Effie.jpg"
@@ -91,7 +91,7 @@ const CatsGroup = () => {
           layout="fixed"
           width={220}
           height={220}
-          quality={100}
+          quality={85}
         />
       </Box>
     </Box>

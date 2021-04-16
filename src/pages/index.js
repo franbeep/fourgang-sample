@@ -9,10 +9,16 @@ import Layout from '../components/layout';
 import Seo from '../components/seo';
 import { graphql } from 'gatsby';
 import { makeStyles } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   container: {
-    'paddingTop': '15%',
+    'paddingTop': '150px',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+      paddingTop: '15%',
+    },
     '& a': {
       color: theme.palette.secondary.main,
       textDecoration: 'none',
@@ -29,6 +35,19 @@ const useStyles = makeStyles(theme => ({
 const IndexPage = ({ data }) => {
   const classes = useStyles();
 
+  const theme = useTheme();
+
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('xs'));
+
+  const typographProps = {
+    title: {
+      variant: isSmallScreen ? 'h4' : 'h3',
+    },
+    subtitle: {
+      variant: isSmallScreen ? 'h5' : 'h4',
+    },
+  };
+
   return (
     <Layout>
       <Seo title={`Home`} />
@@ -36,13 +55,13 @@ const IndexPage = ({ data }) => {
       <Container component="main" maxWidth="sm" className={classes.container}>
         <Box color="text.primary" className={classes.catsgroup}>
           <CatsGroup />
-          <Typography variant="h3" gutterBottom>
+          <Typography {...typographProps.title} gutterBottom>
             Gang of Four{' '}
             <span role="img" aria-label="Cat">
               🐈
             </span>
           </Typography>
-          <Typography variant="h5">blog</Typography>
+          <Typography {...typographProps.subtitle}>blog</Typography>
         </Box>
 
         {data.allContentfulBlogPost.nodes.map((item, index) => (
@@ -69,7 +88,7 @@ export const query = graphql`
         authors {
           avatar {
             gatsbyImageData(
-              quality: 100
+              quality: 60
               width: 220
               height: 220
               formats: WEBP

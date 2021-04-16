@@ -42,6 +42,11 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(0.6),
     opacity: 0.75,
   },
+  avatarGroup: {
+    '& .MuiAvatar-root': {
+      borderColor: 'white',
+    },
+  },
   avatarImg: {
     '& div': {
       width: 'inherit !important',
@@ -91,7 +96,7 @@ const BlogPost = ({ pageContext: entry }) => {
 
         <Paper elevation={0} className={classes.padding}>
           <div className={classes.authorDate}>
-            <AvatarGroup max={3}>
+            <AvatarGroup max={3} className={classes.avatarGroup}>
               {entry.authors.map((author, authorIndex) => (
                 <Avatar key={authorIndex} className={classes.avatarImg}>
                   <GatsbyImage

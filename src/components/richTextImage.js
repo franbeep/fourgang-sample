@@ -34,7 +34,7 @@ const RichTextImage = ({ className, assetId }) => {
   `);
 
   const asset = data.allContentfulAsset.edges.find(
-    item => item.node.contentful_id == assetId
+    item => item.node.contentful_id === assetId
   );
 
   if (!asset) return null;
