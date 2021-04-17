@@ -33,4 +33,9 @@
 - Netlify as the static website hosting alternative
 - Google Analytics
 
+<h2>Screenshots</h2>
+
+<img alt="Netlify Status" src="screenshots/mobile.png" width="200">
+<img alt="Netlify Status" src="screenshots/desktop.png" width="500">
+
 <h3>Thanks!</h3>
