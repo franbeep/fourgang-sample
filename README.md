@@ -1,5 +1,3 @@
-# Gang of Four
-
 <h1 align="center">
   Gang of Four
 </h1>
