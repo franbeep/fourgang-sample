@@ -8,10 +8,18 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   container: {
-    paddingTop: '15%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    'paddingTop': '150px',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+      paddingTop: '15%',
+    },
+    '& a': {
+      color: theme.palette.secondary.main,
+      textDecoration: 'none',
+    },
+    'display': 'flex',
+    'flexDirection': 'column',
+    'alignItems': 'center',
   },
 }));
 

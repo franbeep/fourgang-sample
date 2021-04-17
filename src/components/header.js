@@ -1,8 +1,16 @@
 import * as React from 'react';
 
-import { AppBar, Box, Button, IconButton, Toolbar } from '@material-ui/core';
+import {
+  AppBar,
+  Box,
+  Button,
+  IconButton,
+  Paper,
+  Toolbar,
+} from '@material-ui/core';
 import { fade, makeStyles } from '@material-ui/core/styles';
 
+import { ClickAwayListener } from '@material-ui/core';
 import { Link } from 'gatsby';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import Search from '../components/search';
@@ -10,18 +18,29 @@ import Search from '../components/search';
 const createUseStyles = colorSet => {
   return makeStyles(theme => ({
     root: {
-      boxShadow: 'none',
+      'boxShadow': 'none',
+      '& a': {
+        textDecoration: 'none',
+      },
     },
     grow: {
       flexGrow: 1,
-      // [theme.breakpoints.up('sm')]: {
-      //   display: 'hidden',
-      // },
     },
     menuNavigation: {
       display: 'none',
       [theme.breakpoints.up('sm')]: {
         display: 'block',
+      },
+    },
+    menuHamburguerNavigation: {
+      'position': 'relative',
+      'alignSelf': 'flex-end',
+      'left': '-35px',
+      '& div': {
+        position: 'absolute',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'start',
       },
     },
     menuButton: {
@@ -82,35 +101,59 @@ const createUseStyles = colorSet => {
 
 const Header = ({ theme = 'light' }) => {
   const classes = createUseStyles(theme)();
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
   const searchIndices = [{ name: `Pages`, title: `Pages` }];
+
+  const links = [
+    <Link to="/" key={0}>
+      <Button>Home</Button>
+    </Link>,
+
+    <Link to="/about" key={1}>
+      <Button>About</Button>
+    </Link>,
+
+    <a href="/rss.xml" target="_blank" rel="noopener nofollow" key={2}>
+      <Button>RSS</Button>
+    </a>,
+  ];
 
   return (
     <AppBar position="fixed" color="transparent" className={classes.root}>
       <Toolbar component="nav">
-        <IconButton
-          edge="start"
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="menu"
+        <ClickAwayListener
+          // onClickAway={() => {
+          //   setMenuOpen(false);
+          // }}
+          onClickAway={() => {
+            setMenuOpen(false);
+          }}
         >
-          <MenuIcon />
-        </IconButton>
+          <>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
+              onClick={() => {
+                setMenuOpen(!menuOpen);
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+
+            {menuOpen && (
+              <Box component="div" className={classes.menuHamburguerNavigation}>
+                <Paper elevation={0}>{links}</Paper>
+              </Box>
+            )}
+          </>
+        </ClickAwayListener>
+
         <div className={classes.grow}></div>
 
-        <Box className={classes.menuNavigation}>
-          <Link to="/">
-            <Button>Home</Button>
-          </Link>
-
-          <Link to="/about">
-            <Button>About</Button>
-          </Link>
-
-          <a href="/rss.xml" target="_blank" rel="noopener nofollow">
-            <Button>RSS</Button>
-          </a>
-        </Box>
+        <Box className={classes.menuNavigation}>{links}</Box>
 
         <Search indices={searchIndices} />
       </Toolbar>
