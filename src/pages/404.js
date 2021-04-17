@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   container: {
     'paddingTop': '150px',
+    'textAlign': 'center',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
       paddingTop: '15%',
