@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://app.netlify.com/sites/fourgang/deploys">
-    <img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/81481391-8b7b-4d8b-895a-9c861de5375f/deploy-status">
+    <img alt="Netlify" src="https://img.shields.io/netlify/81481391-8b7b-4d8b-895a-9c861de5375f">
   </a>
   <a href="https://opensource.org/licenses/MIT">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg">
@@ -32,6 +32,7 @@
 - Algolia for searching and indexing
 - Netlify as the static website hosting alternative
 - Google Analytics
+- Material UI
 
 <h2>Screenshots</h2>
 
