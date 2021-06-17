@@ -36,7 +36,20 @@
 
 <h2>Screenshots</h2>
 
-<img alt="Netlify Status" src="screenshots/mobile.png" width="200">
-<img alt="Netlify Status" src="screenshots/desktop.png" width="500">
+<h3>v1.1</h3>
+
+<img alt="Mobile Home Screenshot" src="screenshots/v1-1/mobile-home.png" width="200">
+<img alt="Mobile Post Screenshot" src="screenshots/v1-1/mobile-post.png" width="200">
+<br />
+<img alt="Desktop Home Screenshot" src="screenshots/v1-1/desktop-home.png" width="500">
+<br />
+<img alt="Desktop Post Screenshot" src="screenshots/v1-1/desktop-post.png" width="500">
+<br />
+
+<h3>v1</h3>
+
+<img alt="Mobile Screenshot" src="screenshots/v1/mobile.png" width="200">
+<br />
+<img alt="Desktop Screenshot" src="screenshots/v1/desktop.png" width="500">
 
 <h3>Thanks!</h3>

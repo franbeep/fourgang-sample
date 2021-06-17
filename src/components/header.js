@@ -35,7 +35,7 @@ const createUseStyles = colorSet => {
     menuHamburguerNavigation: {
       'position': 'relative',
       'alignSelf': 'flex-end',
-      'left': '-35px',
+      'right': 0,
       '& div': {
         position: 'absolute',
         display: 'flex',
@@ -45,6 +45,8 @@ const createUseStyles = colorSet => {
     },
     menuButton: {
       background: 'rgba(255, 255, 255, 0.8)',
+      marginRight: theme.spacing(1),
+      marginLeft: '-6px',
       borderRadius: theme.spacing(0.5),
       [theme.breakpoints.up('sm')]: {
         display: 'none',
@@ -105,6 +107,9 @@ const createUseStyles = colorSet => {
       padding: '0.5em 1em',
       borderRadius: theme.spacing(0.5),
     },
+    paperCarded: {
+      background: 'rgba(255, 255, 255, 0.8)',
+    },
   }));
 };
 
@@ -154,7 +159,9 @@ const Header = ({ theme = 'light' }) => {
 
             {menuOpen && (
               <Box component="div" className={classes.menuHamburguerNavigation}>
-                <Paper elevation={0}>{links}</Paper>
+                <Paper elevation={0} className={classes.paperCarded}>
+                  {links}
+                </Paper>
               </Box>
             )}
           </>

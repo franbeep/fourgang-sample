@@ -15,33 +15,34 @@ const WallpaperLayout = ({ ...rest }) => {
 export default WallpaperLayout;
 
 function Wallpaper({ maxHeight = '90vh', dynamic, dynamicData, children }) {
-  // if (dynamic) {
-  //   return (
-  //     <div style={{ display: 'grid' }}>
-  //       <GatsbyImage
-  //         style={{
-  //           gridArea: '1/1',
-  //           maxHeight,
-  //           // marginTop: 70,
-  //         }}
-  //         image={dynamicData}
-  //         src="" // marked as required, but useless
-  //         alt=""
-  //         layout="fullWidth"
-  //       />
-  //       <div
-  //         style={{
-  //           gridArea: '1/1',
-  //           position: 'relative',
-  //           placeItems: 'center',
-  //           display: 'grid',
-  //         }}
-  //       >
-  //         {children}
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  if (dynamic) {
+    return (
+      <div style={{ display: 'grid' }}>
+        <GatsbyImage
+          style={{
+            gridArea: '1/1',
+            maxHeight,
+            maxWidth: '100vw',
+            // marginTop: 70,
+          }}
+          image={dynamicData}
+          src="" // marked as required, but useless
+          alt=""
+          layout="fullWidth"
+        />
+        <div
+          style={{
+            gridArea: '1/1',
+            position: 'relative',
+            placeItems: 'center',
+            display: 'grid',
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={{ display: 'grid' }}>

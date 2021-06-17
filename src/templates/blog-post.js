@@ -59,6 +59,12 @@ const useStyles = makeStyles(theme => ({
       height: 'inherit !important',
     },
   },
+  carded: {
+    display: 'inline-flex',
+    background: 'rgba(255, 255, 255, 0.8)',
+    padding: '0.15em 0.5em',
+    borderRadius: theme.spacing(0.5),
+  },
 }));
 
 const options = {
@@ -82,8 +88,9 @@ const BlogPost = ({ pageContext: entry }) => {
 
   return (
     <WallpaperLayout
-    // dynamic
-    // dynamicData={entry.background.gatsbyImageData}
+      dynamic
+      dynamicData={entry.background.gatsbyImageData}
+      maxHeight="75vh"
     >
       <Seo
         title={entry.title}
@@ -99,7 +106,7 @@ const BlogPost = ({ pageContext: entry }) => {
         maxWidth="md"
         className={classes.container}
       >
-        <Typography variant="h3" gutterBottom>
+        <Typography variant="h3" className={classes.carded} gutterBottom>
           {entry.title}
         </Typography>
 
