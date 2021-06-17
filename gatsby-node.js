@@ -37,6 +37,15 @@ exports.createPages = ({ graphql, actions }) => {
                 }
                 name
               }
+              background {
+                gatsbyImageData(
+                  quality: 60
+                  formats: WEBP
+                  layout: FIXED
+                  placeholder: BLURRED
+                  outputPixelDensities: 1
+                )
+              }
             }
           }
         }
