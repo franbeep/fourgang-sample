@@ -15,6 +15,7 @@ import { BLOCKS } from '@contentful/rich-text-types';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Header from '../components/header';
 import Layout from '../components/layout';
+import WallpaperLayout from '../components/wallpaper-layout';
 import RichTextImage from '../components/richTextImage';
 import Seo from '../components/seo';
 import { makeStyles } from '@material-ui/core/styles';
@@ -25,6 +26,7 @@ import { renderRichText } from 'gatsby-source-contentful/rich-text';
 const useStyles = makeStyles(theme => ({
   container: {
     'paddingTop': '150px',
+    'marginBottom': '100px',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
       paddingTop: '15%',
@@ -79,7 +81,10 @@ const BlogPost = ({ pageContext: entry }) => {
   const simpleText = parseRichTextToTexts(JSON.parse(entry.text.raw));
 
   return (
-    <Layout>
+    <WallpaperLayout
+    // dynamic
+    // dynamicData={entry.background.gatsbyImageData}
+    >
       <Seo
         title={entry.title}
         desc={simpleText[0]}
@@ -153,7 +158,7 @@ const BlogPost = ({ pageContext: entry }) => {
           </Typography>
         </Paper>
       </Container>
-    </Layout>
+    </WallpaperLayout>
   );
 };
 

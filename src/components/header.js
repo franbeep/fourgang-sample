@@ -44,6 +44,8 @@ const createUseStyles = colorSet => {
       },
     },
     menuButton: {
+      background: 'rgba(255, 255, 255, 0.8)',
+      borderRadius: theme.spacing(0.5),
       [theme.breakpoints.up('sm')]: {
         display: 'none',
       },
@@ -95,6 +97,13 @@ const createUseStyles = colorSet => {
           width: '20ch',
         },
       },
+    },
+    carded: {
+      display: 'flex',
+      flexDirection: 'row',
+      background: 'rgba(255, 255, 255, 0.8)',
+      padding: '0.5em 1em',
+      borderRadius: theme.spacing(0.5),
     },
   }));
 };
@@ -153,9 +162,10 @@ const Header = ({ theme = 'light' }) => {
 
         <div className={classes.grow}></div>
 
-        <Box className={classes.menuNavigation}>{links}</Box>
-
-        <Search indices={searchIndices} />
+        <Box className={classes.carded}>
+          <Box className={classes.menuNavigation}>{links}</Box>
+          <Search indices={searchIndices} />
+        </Box>
       </Toolbar>
     </AppBar>
   );
